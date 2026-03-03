@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E5041.pro — Защита медицинских данных 2026</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/cookieconsent/dist/cookieconsent.css">
+</head>
+<body>
+    <!-- НАВИГАЦИЯ -->
+    <nav class="glass" style="position:fixed; top:0; width:100%; z-index:1000; padding:15px 0;">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+            <a href="{% url 'index' %}" style="font-size:1.6rem; font-weight:200; color:#A855F7; text-decoration:none;">E5041.pro</a>
+            <div style="display:flex; gap:30px;">
+                <a href="{% url 'index' %}" style="color:white; text-decoration:none;">Главная</a>
+                <a href="{% url 'services' %}" style="color:white; text-decoration:none;">Услуги</a>
+                <a href="{% url 'docshell' %}" style="color:white; text-decoration:none;">DocShell 4.0</a>
+                <a href="{% url 'expert' %}" style="color:white; text-decoration:none;">Эксперт</a>
+                <a href="{% url 'contacts' %}" style="color:white; text-decoration:none;">Контакты</a>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- ФУТЕР -->
+    <footer class="glass" style="padding:40px 20px; text-align:center; font-size:0.9rem; opacity:0.8;">
+        <p>&copy; 2026 E5041.pro. Все права защищены.</p>
+        <a href="{% url 'privacy' %}" style="color:#A855F7; text-decoration:none;">Политика обработки ПДн</a> | <a href="{% url 'consent' %}" style="color:#A855F7; text-decoration:none;">Согласие на обработку ПДн</a>
+    </footer>
+
+    <!-- Cookie Consent Banner -->
+    <script src="https://unpkg.com/cookieconsent@3/dist/cookieconsent.js"></script>
+    <script>
+        window.addEventListener("load", function(){
+            window.cookieconsent.initialise({
+                "palette": {
+                    "popup": {"background": "#0A0A0A"},
+                    "button": {"background": "#A855F7"}
+                },
+                "content": {
+                    "message": "Мы используем cookies для улучшения сайта. Согласны?",
+                    "dismiss": "Принять",
+                    "link": "Политика cookies",
+                    "href": "{% url 'privacy' %}"
+                },
+                "type": "opt-in"  // с чекбоксом
+            })
+        });
+    </script>
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Django==6.0.3
+python-dotenv
+pillow
+pydantic>=2.12  # pydantic-core через PyO3 ABI3 — работает на Python 3.14 без перекомпиляции

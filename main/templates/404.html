@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="min-height:100vh; display:flex; align-items:center; justify-content:center; text-align:center;">
+    <div>
+        <h1 style="font-size:8rem; font-weight:200; color:#A855F7;">404</h1>
+        <p style="font-size:1.8rem;">Страница не найдена</p>
+        <a href="{% url 'index' %}" class="btn">Вернуться на главную</a>
+    </div>
+</div>
+{% endblock %}

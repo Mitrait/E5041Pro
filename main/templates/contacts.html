@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container" style="min-height:100vh; display:flex; align-items:center; padding:120px 20px;">
+    <div style="display:flex; gap:80px; width:100%; max-width:1100px; margin:0 auto; flex-wrap:wrap;">
+        <!-- Левая колонка -->
+        <div style="flex:1; min-width:300px;">
+            <h1 style="font-size:4.5rem; font-weight:200; line-height:1.1; margin-bottom:40px;">Контакты</h1>
+            <div style="font-size:1.15rem; opacity:0.9;">
+                <p style="margin-bottom:30px;">Neue Haas Grotesk Thin #A855F7<br>рфскомопяцть нмбльн матеньн рфые форсм...</p>
+                <p>E-mail Haas Grotesk Thin<br>Колинннсчен: Soft Voli Variant 14</p>
+                <p style="color:#A855F7; font-size:1.5rem; margin-top:30px;">#A855F7</p>
+            </div>
+            <div style="margin-top:100px; font-size:0.95rem; opacity:0.6;">#0A0A0A</div>
+        </div>
+
+        <!-- Форма (glass + liquid) -->
+        <div class="glass" style="flex:1; min-width:320px; padding:50px 40px;">
+            <h2 style="font-size:2.3rem; font-weight:200; margin-bottom:40px;">Форма заявки</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn" style="width:100%; margin-top:30px;">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

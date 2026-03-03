@@ -1,0 +1,71 @@
+/* Комбинация Metal (цвета/градиенты) + Liquid 3D (эффекты/анимации) 2026 */
+:root {
+    --accent: #A855F7;
+    --bg: #0A0A0A;
+    --text: #F5F5F5;
+    --glass: rgba(255,255,255,0.08); /* почти прозрачный */
+    --glass-border: rgba(255,255,255,0.15);
+    --metal: linear-gradient(135deg, #1C1C1C, #0A0A0A); /* metal цвета из макета 2 */
+    --liquid-shadow: 0 0 20px rgba(168,85,247,0.2); /* liquid из макета 3 */
+    --blur: 20px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-weight: 200;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    overflow-x: hidden;
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(168,85,247,0.05) 0%, transparent 70%);
+    animation: liquid-bg 20s infinite alternate;
+    pointer-events: none;
+    z-index: -1;
+}
+@keyframes liquid-bg { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.05); opacity: 1; filter: blur(3px); } }
+
+.glass {
+    background: var(--metal); /* metal градиент */
+    backdrop-filter: blur(var(--blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 8px; /* тонкий прямоугольник */
+    box-shadow: var(--liquid-shadow), inset -4px -4px 8px rgba(255,255,255,0.05); /* neumorphism inset + liquid */
+    opacity: 0.85; /* почти прозрачный */
+    transition: all 0.4s ease;
+    animation: float 3s infinite ease-in-out; /* плавно парят */
+}
+.glass:hover { opacity: 1; transform: translateY(-5px) rotateX(5deg) rotateY(5deg); box-shadow: 0 10px 30px rgba(168,85,247,0.4); }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+.btn {
+    background: var(--metal); /* metal */
+    color: white;
+    padding: 12px 32px; /* тонкий */
+    border: 1px solid var(--glass-border); /* почти прозрачный */
+    border-radius: 8px; /* прямоугольник */
+    font-weight: 200; /* лёгкий тонкий */
+    cursor: pointer;
+    opacity: 0.8;
+    transition: all 0.4s;
+    box-shadow: var(--liquid-shadow);
+    transform-style: preserve-3d;
+    animation: float 3s infinite ease-in-out;
+}
+.btn:hover { opacity: 1; transform: translateY(-5px) rotateX(10deg) rotateY(10deg); box-shadow: 0 0 30px rgba(168,85,247,0.4); }
+
+.container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+.hero { text-align:center; padding:0 20px; }
+.services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px,1fr)); gap:30px; padding:80px 20px; } /* Lego modular grid */
+.card { padding:40px 30px; text-align:center; } /* Lego blocks with shadows */
+.card h3 { font-size:1.6rem; color:var(--accent); margin-bottom:20px; }
+.service-block { padding:100px 20px; border-bottom:1px solid rgba(255,255,255,0.1); }
+.service-block h2 { font-size:2.8rem; font-weight:200; color:var(--accent); margin-bottom:40px; text-align:center; }
+
+@media (max-width:768px) { .services-grid { grid-template-columns:1fr; } }
