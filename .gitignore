@@ -1,6 +1,6 @@
 .env
+.env.example
+.idea/
+db.sqlite3  # База данных не должна быть в Git
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.idea/  # Если не хотите коммитить настройки PyCharm
